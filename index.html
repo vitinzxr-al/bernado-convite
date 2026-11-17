@@ -9,23 +9,21 @@
 </head>
 <body>
 
-
-<!-- TELA 1: VÍDEO DE CAPA -->
-<div id="video-screen" class="screen full-screen">
-    <video id="intro-video" autoplay muted playsinline webkit-playsinline preload="auto">
-        <source src="video_1.mp4" type="video/mp4">
-        Seu navegador não suporta vídeos.
-    </video>
-
-<button class="btn-abrir-convite" onclick="irParaConvite()"></button>
-
-</div>
+    <!-- TELA 1: VÍDEO DE CAPA -->
+    <div id="video-screen" class="screen">
+        <video id="intro-video" autoplay muted playsinline webkit-playsinline preload="auto">
+            <source src="video_1.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+        </video>
+        <!-- O clique em qualquer lugar da tela avança para o convite -->
+        <button class="btn-abrir-convite" onclick="irParaConvite()"></button>
+    </div>
 
     <!-- TELA 2: O CONVITE COM O FUNDO DO CELEIRO -->
     <div id="invitation-screen" class="screen hidden">
         <div class="barn-background">
             
-            <!-- Botão de Voltar discreto no topo -->
+            <!-- Botão de Voltar -->
             <button class="btn-voltar" onclick="voltarAoVideo()">⬅️ Voltar</button>
 
             <!-- Textos posicionados em cima da placa do pergaminho -->
@@ -40,24 +38,22 @@
                 </div>
             </div>
 
-            <!-- Botões na parte inferior (em cima da grama) -->
+            <!-- Botões na parte inferior -->
             <div class="bottom-buttons">
-                <button class="custom-btn green-btn" onclick="confirmarPresenca()">
-                    <span class="icon-check"></span> 
-                </button>
-                <button class="custom-btn brown-btn" onclick="abrirMapa()">
-                    <span class="icon-map"></span> 
-                </button>
+                <button class="custom-btn" onclick="confirmarPresenca()"></button>
+                <button class="custom-btn" onclick="abrirMapa()"></button>
             </div>
 
         </div>
- <!-- ÁUDIO DE FUNDO (Comentado para o teste) -->
-    
+    </div>
+
+    <!-- ÁUDIO DE FUNDO -->
     <audio id="background-music" loop>
         <source src="musica.mp3" type="audio/mp3">
         Seu navegador não suporta áudio.
     </audio>
 
+    <!-- Controle de Música Flutuante -->
     <div class="music-control-box">
         <button id="music-btn" class="music-toggle-btn" onclick="toggleMusica()">
             🎵 <span id="music-status">Tocar</span>
