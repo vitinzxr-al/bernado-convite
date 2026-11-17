@@ -48,7 +48,8 @@ body {
 .full-screen {
     padding: 0 !important;
     background: #000;
-    cursor: pointer;
+    position: relative !important; /* Essencial para prender o botão invisível apenas a esta tela */
+    overflow: hidden;
 }
 
 #intro-video {
@@ -58,7 +59,21 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    pointer-events: none;
+    z-index: 1; /* Fica no fundo */
+    pointer-events: none; /* Impede o vídeo de roubar os cliques */
+}
+
+.btn-abrir-convite {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 20; /* Fica em cima do vídeo para receber o toque perfeitamente */
+    opacity: 0; /* Invisível mas pronto a ser tocado */
 }
 
 .video-overlay-hint {
@@ -126,7 +141,7 @@ body {
 
 .child-name {
     color: #4A3319;
-    font-size: 2.5rem; /* Aumentado de 2.1rem para 2.5rem */
+    font-size: 2.5rem;
     font-weight: 600;
     margin-bottom: 2px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
@@ -135,7 +150,7 @@ body {
 .age-tag {
     background: #d9534f;
     color: white;
-    font-size: 0.85rem; /* Aumentado para destacar mais */
+    font-size: 0.85rem;
     padding: 3px 14px;
     border-radius: 12px;
     font-weight: 600;
@@ -145,7 +160,7 @@ body {
 
 .event-details {
     color: #5c4533;
-    font-size: 0.84rem; /* Aumentado de 0.76rem para 0.84rem para ficar bem legível */
+    font-size: 0.84rem;
     line-height: 1.35;
     display: flex;
     flex-direction: column;
@@ -161,7 +176,7 @@ body {
 }
 
 .address {
-    font-size: 0.76rem; /* Aumentado */
+    font-size: 0.76rem;
     color: #666;
     margin-bottom: 2px;
 }
@@ -171,7 +186,7 @@ body {
     border: 0.5px dashed #dfb85e;
     padding: 2px 4px;
     border-radius: 5px;
-    font-size: 0.59rem; /* Aumentado para facilitar a leitura */
+    font-size: 0.59rem;
     color: #5a4521;
     margin-top: 4px;
     line-height: 1.3;
@@ -180,7 +195,7 @@ body {
 /* BOTÕES GRANDES E CENTRALIZADOS POR CIMA DA FOTO */
 .bottom-buttons {
     position: absolute;
-    bottom: 15px; /* Altura na parte inferior */
+    bottom: 15px;
     left: 15px;
     right: 15px;
     display: flex;
@@ -190,14 +205,13 @@ body {
 
 .custom-btn {
     flex: 1;
-    height: 105px; /* Aumentamos bastante a altura para o botão ficar bem grandão */
-    background: transparent; /* Invisível, mostrando apenas a arte da foto */
-    border: none; /* Sem borda */
+    height: 105px;
+    background: transparent;
+    border: none;
     cursor: pointer;
     border-radius: 20px;
 }
 
-/* Efeito leve ao clicar para confirmar que a área de toque é grande */
 .custom-btn:active {
     background: rgba(255, 255, 255, 0.2);
 }
@@ -236,10 +250,9 @@ body {
     transform: scale(0.95);
 }
 
-/* Estilo da barra deslizante de volume */
 .volume-range {
     width: 60px;
     height: 4px;
-    accent-color: #ffc107; /* Cor amonetada charmosa na barra */
+    accent-color: #ffc107;
     cursor: pointer;
 }
