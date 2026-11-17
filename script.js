@@ -1,6 +1,6 @@
 const video = document.getElementById('intro-video');
-//const music = document.getElementById('background-music');
-//const musicStatus = document.getElementById('music-status');
+const music = document.getElementById('background-music');
+const musicStatus = document.getElementById('music-status');
 const volumeSlider = document.getElementById('volume-slider');
 let isPlaying = false; // Começa falso por padrão no celular
 
