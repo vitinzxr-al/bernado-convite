@@ -11,11 +11,14 @@
 
 
 <!-- TELA 1: VÍDEO DE CAPA -->
-<div id="video-screen" class="screen full-screen" onclick="irParaConvite()">
+<div id="video-screen" class="screen full-screen">
     <video id="intro-video" autoplay muted playsinline webkit-playsinline preload="auto">
         <source src="video_1.mp4" type="video/mp4">
         Seu navegador não suporta vídeos.
     </video>
+
+<button class="btn-abrir-convite" onclick="irParaConvite()"></button>
+
 </div>
 
     <!-- TELA 2: O CONVITE COM O FUNDO DO CELEIRO -->
@@ -49,7 +52,7 @@
 
         </div>
  <!-- ÁUDIO DE FUNDO (Comentado para o teste) -->
-    <!-- 
+    
     <audio id="background-music" loop>
         <source src="musica.mp3" type="audio/mp3">
         Seu navegador não suporta áudio.
@@ -60,7 +63,7 @@
             🎵 <span id="music-status">Tocar</span>
         </button>
     </div>
-    -->
+   
     <script src="script.js"></script>
 </body>
 </html>
