@@ -153,7 +153,7 @@ body {
 }
 
 .event-text {
-    font-style: italic;
+    font-style: oblique;
     color: #6b5341;
     margin-bottom: 2px;
     font-size: 0.99rem;
