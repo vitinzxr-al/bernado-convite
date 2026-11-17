@@ -39,12 +39,6 @@ function toggleMusica() {
     }
 }
 
-// Função para controlar o volume pela barrinha
-function mudarVolume(valor) {
-    if (music) {
-        music.volume = valor;
-    }
-}
 
 // Configuração do vídeo de introdução
 if (video) {
