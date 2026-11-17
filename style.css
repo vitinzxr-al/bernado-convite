@@ -153,17 +153,16 @@ body, html {
 /* BOTÕES NA PARTE INFERIOR */
 .bottom-buttons {
     position: absolute;
-    bottom: 20px;
+    bottom: 30px; /* Aumentamos a folga para desgrudar da borda inferior */
     left: 20px;
     right: 20px;
     display: flex;
     gap: 12px;
     z-index: 30;
 }
-
 .custom-btn {
     flex: 1;
-    height: 70px;
+    height: 65px; /* Altura ideal para toque sem exagerar no tamanho */
     background: transparent;
     border: none;
     cursor: pointer;
