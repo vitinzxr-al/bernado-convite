@@ -47,21 +47,17 @@
             </div>
 
         </div>
-    </div>
-<!-- ÁUDIO DE FUNDO (Já começa tocando em loop) -->
-    <audio id="background-music" autoplay loop>
-        <source src="Mundo Bita - Fazendinha.mp3" type="audio/mp3">
-        Seu navegador não suporta áudio.
-    </audio>
+ <!-- ÁUDIO DE FUNDO -->
+<audio id="background-music" loop>
+    <source src="musica.mp3" type="audio/mp3">
+    Seu navegador não suporta áudio.
+</audio>
 
-    <!-- PAINEL DE CONTROLE DE MÚSICA (Canto superior direito) -->
-    <div class="music-control-box">
-        <button id="music-btn" class="music-toggle-btn" onclick="toggleMusica()">
-            🎵 <span id="music-status">Pausar</span>
-        </button>
-        <!-- Barra para mexer no volume -->
-        <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.5" class="volume-range" onchange="mudarVolume(this.value)" oninput="mudarVolume(this.value)" title="Volume">
-    </div>
+<!-- PAINEL DE CONTROLE DE MÚSICA (Canto superior direito) -->
+<div class="music-control-box">
+    <button id="music-btn" class="music-toggle-btn" onclick="toggleMusica()">
+        🎵 <span id="music-status">Tocar</span>
+    </button>
     <script src="script.js"></script>
 </body>
 </html>
