@@ -38,7 +38,7 @@ function confirmarPresenca() {
     // Insira o seu número de WhatsApp abaixo entre aspas (ex: 5511999999999)
     const meuNumeroWhatsApp = "5516991500666"; 
     
-    const mensagem = encodeURIComponent("Olá! Confirmo minha presença no aniversário de 2 anos do Bernardo na Fazendinha! 🤠🎉");
+    const mensagem = encodeURIComponent("Olá! Confirmo minha presença no aniversário de 2 anos do Bernardo! 🤠🎉");
     
     // Abre o WhatsApp direto com o seu número e a mensagem pronta
     window.open(`https://wa.me/${meuNumeroWhatsApp}?text=${mensagem}`, '_blank');
