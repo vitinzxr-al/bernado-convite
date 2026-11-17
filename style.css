@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fredoka', cursive, sans-serif;
+}
+
+body {
+    background: #111;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.screen {
+    width: 100vw;
+    height: 100vh;
+    max-width: 450px;
+    max-height: 100vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    overflow: hidden;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+@media (min-width: 768px) {
+    .screen {
+        height: 90vh;
+        max-height: 850px;
+        border-radius: 25px;
+        border: 6px solid #3c2f25;
+    }
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+}
+
+/* TELA DO VÍDEO */
+.full-screen {
+    padding: 0 !important;
+    background: #000;
+    cursor: pointer;
+}
+
+#intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.video-overlay-hint {
+    position: absolute;
+    bottom: 25px;
+    background: rgba(139, 69, 19, 0.85);
+    color: #fff8dc;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    z-index: 10;
+    animation: pulsar 1.5s infinite;
+}
+
+@keyframes pulsar {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.03); }
+}
+
+/* TELA DO CONVITE COM O FUNDO DO CELEIRO */
+.barn-background {
+    width: 100%;
+    height: 100%;
+    background-image: url('fundo-celeiro.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 25px 25px 25px;
+}
+
+/* Botão de voltar */
+.btn-voltar {
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    align-self: flex-start;
+    z-index: 20;
+}
+
+/* CAIXA DE TEXTO COM LETRAS MAIORES E MAIS DESTACADAS */
+.card-content {
+    position: absolute;
+    top: 29%;
+    left: 17%;
+    right: 17%;
+    bottom: 22%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+    z-index: 10;
+}
+
+.child-name {
+    color: #4A3319;
+    font-size: 2.5rem; /* Aumentado de 2.1rem para 2.5rem */
+    font-weight: 600;
+    margin-bottom: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+}
+
+.age-tag {
+    background: #d9534f;
+    color: white;
+    font-size: 0.85rem; /* Aumentado para destacar mais */
+    padding: 3px 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.event-details {
+    color: #5c4533;
+    font-size: 0.84rem; /* Aumentado de 0.76rem para 0.84rem para ficar bem legível */
+    line-height: 1.35;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.event-text {
+    font-style: italic;
+    color: #6b5341;
+    margin-bottom: 2px;
+    font-size: 0.99rem;
+}
+
+.address {
+    font-size: 0.76rem; /* Aumentado */
+    color: #666;
+    margin-bottom: 2px;
+}
+
+.drink-note {
+    background: rgba(255, 243, 205, 0.65);
+    border: 0.5px dashed #dfb85e;
+    padding: 2px 4px;
+    border-radius: 5px;
+    font-size: 0.59rem; /* Aumentado para facilitar a leitura */
+    color: #5a4521;
+    margin-top: 4px;
+    line-height: 1.3;
+}
+
+/* BOTÕES GRANDES E CENTRALIZADOS POR CIMA DA FOTO */
+.bottom-buttons {
+    position: absolute;
+    bottom: 15px; /* Altura na parte inferior */
+    left: 15px;
+    right: 15px;
+    display: flex;
+    gap: 12px;
+    z-index: 30;
+}
+
+.custom-btn {
+    flex: 1;
+    height: 105px; /* Aumentamos bastante a altura para o botão ficar bem grandão */
+    background: transparent; /* Invisível, mostrando apenas a arte da foto */
+    border: none; /* Sem borda */
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+/* Efeito leve ao clicar para confirmar que a área de toque é grande */
+.custom-btn:active {
+    background: rgba(255, 255, 255, 0.2);
+}

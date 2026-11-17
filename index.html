@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fazendinha do Bernardo - 2 Aninhos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- TELA 1: VÍDEO DE CAPA -->
+    <div id="video-screen" class="screen full-screen" onclick="irParaConvite()">
+        <video id="intro-video" autoplay playsinline muted>
+            <source src="video_1.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+        </video>
+    </div>
+
+    <!-- TELA 2: O CONVITE COM O FUNDO DO CELEIRO -->
+    <div id="invitation-screen" class="screen hidden">
+        <div class="barn-background">
+            
+            <!-- Botão de Voltar discreto no topo -->
+            <button class="btn-voltar" onclick="voltarAoVideo()">⬅️ Voltar</button>
+
+            <!-- Textos posicionados em cima da placa do pergaminho -->
+            <div class="card-content">
+                <h1 class="child-name">Bernardo</h1>
+                <span class="age-tag">2 anos</span>
+                
+                <div class="event-details">
+                    <p class="event-text">Com muita alegria, convidamos você para comemorar meu aniversário!</p>
+                    <p><strong>📅 Data:</strong> 02/01 (Sábado) — 19h</p>
+                    <p class="drink-note">🍸 Bebida alcoólica por conta de cada convidado. Traga a sua preferida!</p>
+                </div>
+            </div>
+
+            <!-- Botões na parte inferior (em cima da grama) -->
+            <div class="bottom-buttons">
+                <button class="custom-btn green-btn" onclick="confirmarPresenca()">
+                    <span class="icon-check"></span> 
+                </button>
+                <button class="custom-btn brown-btn" onclick="abrirMapa()">
+                    <span class="icon-map"></span> 
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
