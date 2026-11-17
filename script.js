@@ -2,7 +2,7 @@ const video = document.getElementById('intro-video');
 const music = document.getElementById('background-music');
 const musicStatus = document.getElementById('music-status');
 const volumeSlider = document.getElementById('volume-slider');
-let isPlaying = false; // Começa falso por padrão no celular
+let isPlaying = false;
 
 // Volume inicial em 50%
 if (music) {
@@ -10,33 +10,41 @@ if (music) {
     if (volumeSlider) volumeSlider.value = 0.5;
 }
 
-// Ao carregar, prepara o botão para "Tocar"
+// Garante que o vídeo de capa tente rodar mudo assim que carregar
 window.addEventListener('DOMContentLoaded', () => {
     if (musicStatus) musicStatus.textContent = "Tocar";
     isPlaying = false;
+    
+    if (video) {
+        video.muted = true; // Necessário para autoplay em alguns mobile
+        video.play().catch(e => console.log("Autoplay do vídeo bloqueado:", e));
+    }
 });
 
-// Configuração do vídeo de introdução
+// Quando o vídeo de capa terminar, ele pode pausar ou reiniciar
 if (video) {
     video.onended = function() {
         video.pause();
     };
 }
 
-// Clicou no vídeo de capa: abre o convite e garante a música
+// Clicou no botão invisível de abrir o convite
 function irParaConvite() {
     const videoScreen = document.getElementById('video-screen');
     const invitationScreen = document.getElementById('invitation-screen');
 
+    // Pausa o vídeo de capa
     if (video) video.pause();
 
+    // Dispara a música de fundo do convite com segurança
     if (music && !isPlaying) {
         music.play().then(() => {
             if (musicStatus) musicStatus.textContent = "Pausar";
             isPlaying = true;
-        }).catch(e => console.log(e));
+        }).catch(e => console.log("Erro ao reproduzir áudio:", e));
     }
 
+    // Faz a transição suave para a tela do convite
     if (videoScreen && invitationScreen) {
         videoScreen.style.opacity = '0';
         videoScreen.style.transform = 'scale(1.05)';
@@ -48,7 +56,7 @@ function irParaConvite() {
     }
 }
 
-// Clicou em voltar: retorna para o vídeo de capa
+// Clicou em voltar: retorna para o vídeo de capa reiniciando do zero
 function voltarAoVideo() {
     const videoScreen = document.getElementById('video-screen');
     const invitationScreen = document.getElementById('invitation-screen');
@@ -70,7 +78,7 @@ function voltarAoVideo() {
 
 // Botão Confirmar Presença (WhatsApp)
 function confirmarPresenca() {
-    const meuNumeroWhatsApp = "5516991500666"; // <-- Lembre de colocar seu número aqui com DDI e DDD
+    const meuNumeroWhatsApp = "5516991500666"; 
     const mensagem = encodeURIComponent("Olá! Confirmo minha presença no aniversário de 2 anos do Bernardo! 🤠🎉");
     window.open(`https://wa.me/${meuNumeroWhatsApp}?text=${mensagem}`, '_blank');
 }
@@ -92,7 +100,7 @@ function toggleMusica() {
         music.play().then(() => {
             if (musicStatus) musicStatus.textContent = "Pausar";
             isPlaying = true;
-        });
+        }).catch(e => console.log("Erro ao alternar áudio:", e));
     }
 }
 
