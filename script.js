@@ -1,26 +1,9 @@
+const video = document.getElementById('intro-video');
 const music = document.getElementById('background-music');
 const musicStatus = document.getElementById('music-status');
 const volumeSlider = document.getElementById('volume-slider');
-const videoScreen = document.getElementById('video-screen');
-const video = document.createElement('video');
-let isPlaying = false; // Inicializado explicitamente como falso
-
-// Cria o elemento de vídeo via código para o iPhone não exibir o botão nativo de play
-video.id = 'intro-video';
-video.src = 'video_1.mp4';
-video.autoplay = true;
-video.loop = true;
-video.muted = true;
-video.playsInline = true;
-video.webkitPlaysinline = true;
-video.preload = 'auto';
-
-// Adiciona o vídeo dentro da tela de capa
-if (videoScreen) {
-    videoScreen.insertBefore(video, videoScreen.firstChild);
-    video.play().catch(e => console.log("Reprodução iniciada via interação:", e));
-}
-
+let isPlaying = false;
+let videoTerminou = false; // Trava para garantir que só avança quando acabar
 
 // Volume inicial em 50%
 if (music) {
@@ -28,11 +11,71 @@ if (music) {
     if (volumeSlider) volumeSlider.value = 0.5;
 }
 
-// Ao carregar a página, define o texto do botão como "Tocar"
 window.addEventListener('DOMContentLoaded', () => {
     if (musicStatus) musicStatus.textContent = "Tocar";
     isPlaying = false;
 });
+
+// Assim que o utilizador clica em QUALQUER LUGAR da tela de capa pela primeira vez:
+function interagirTelaCapa() {
+    // 1. Libera e toca a música de fundo
+    if (music && !isPlaying) {
+        music.play().then(() => {
+            if (musicStatus) musicStatus.textContent = "Pausar";
+            isPlaying = true;
+        }).catch(e => console.log(e));
+    }
+
+    // 2. Garante que o vídeo está rodando sem som (caso o navegador tenha pausado)
+    if (video) {
+        video.play();
+    }
+}
+
+// Quando o vídeo da capa CHEGAR AO FIM, ele libera para ir para o convite automaticamente (ou avisa que pode avançar)
+if (video) {
+    video.onended = function() {
+        videoTerminou = true;
+        irParaConvite(); // Transita para o pergaminho assim que o vídeo acaba!
+    };
+}
+
+// Função de transição para o convite do celeiro
+function irParaConvite() {
+    // Se quiser que só avance obrigatoriamente quando o vídeo acabar, descomente a linha abaixo:
+    // if (!videoTerminou) return; 
+
+    const videoScreen = document.getElementById('video-screen');
+    const invitationScreen = document.getElementById('invitation-screen');
+
+    if (videoScreen && invitationScreen) {
+        videoScreen.style.opacity = '0';
+        videoScreen.style.transform = 'scale(1.05)';
+
+        setTimeout(() => {
+            videoScreen.style.display = 'none';
+            invitationScreen.classList.remove('hidden');
+        }, 400);
+    }
+}
+
+// Função de voltar ao vídeo
+function voltarAoVideo() {
+    const videoScreen = document.getElementById('video-screen');
+    const invitationScreen = document.getElementById('invitation-screen');
+
+    if (invitationScreen) invitationScreen.classList.add('hidden');
+    if (videoScreen) {
+        videoScreen.style.display = 'flex';
+        videoScreen.style.opacity = '1';
+        videoScreen.style.transform = 'scale(1)';
+        if (video) {
+            video.currentTime = 0;
+            video.play();
+            videoTerminou = false; // Reseta a trava ao voltar
+        }
+    }
+}
 
 
 // Função para ligar/desligar a música pelo botão
