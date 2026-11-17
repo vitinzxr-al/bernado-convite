@@ -4,6 +4,13 @@ const musicStatus = document.getElementById('music-status');
 const volumeSlider = document.getElementById('volume-slider');
 let isPlaying = false; // Inicializado explicitamente como falso
 
+// Força o carregamento do vídeo via script para o iOS não bloquear os controlos
+if (video) {
+    video.src = "video_1.mp4";
+    video.load();
+    video.play().catch(e => console.log("Autoplay do vídeo prevenido:", e));
+}
+
 // Volume inicial em 50%
 if (music) {
     music.volume = 0.5;
