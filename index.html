@@ -9,13 +9,15 @@
 </head>
 <body>
 
-    <!-- TELA 1: VÍDEO DE CAPA -->
-    <div id="video-screen" class="screen full-screen" onclick="irParaConvite()">
-       <video id="intro-video" autoplay loop muted playsinline webkit-playsinline preload="auto">
-    <source src="video_1.mp4" type="video/mp4">
-    Seu navegador não suporta vídeos.
-</video>
-    </div>
+  <!-- TELA 1: VÍDEO DE CAPA -->
+<div id="video-screen" class="screen full-screen" onclick="irParaConvite()">
+    <video id="intro-video" autoplay loop muted playsinline webkit-playsinline preload="auto">
+        <source src="video_1.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos.
+    </video>
+    <!-- Camada invisível de segurança para o iPhone não mostrar controlos nativos -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5;"></div>
+</div>
 
     <!-- TELA 2: O CONVITE COM O FUNDO DO CELEIRO -->
     <div id="invitation-screen" class="screen hidden">
