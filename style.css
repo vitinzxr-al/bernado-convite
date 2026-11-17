@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    margin: 0;
 }
 
 .screen {
@@ -44,11 +45,11 @@ body {
     transform: scale(0.95);
 }
 
-/* TELA DO VÍDEO */
+/* TELA DO VÍDEO DE CAPA */
 .full-screen {
     padding: 0 !important;
     background: #000;
-    position: relative !important; /* Essencial para prender o botão invisível apenas a esta tela */
+    position: absolute !important;
     overflow: hidden;
 }
 
@@ -63,6 +64,7 @@ body {
     pointer-events: none; /* Impede o vídeo de roubar os cliques */
 }
 
+/* Botão invisível posicionado cirurgicamente em cima da capa */
 .btn-abrir-convite {
     position: absolute;
     top: 0;
@@ -72,27 +74,8 @@ body {
     background: transparent;
     border: none;
     cursor: pointer;
-    z-index: 20; /* Fica em cima do vídeo para receber o toque perfeitamente */
-    opacity: 0; /* Invisível mas pronto a ser tocado */
-}
-
-.video-overlay-hint {
-    position: absolute;
-    bottom: 25px;
-    background: rgba(139, 69, 19, 0.85);
-    color: #fff8dc;
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    z-index: 10;
-    animation: pulsar 1.5s infinite;
-}
-
-@keyframes pulsar {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.03); }
+    z-index: 20; /* Fica acima do vídeo para capturar o toque */
+    opacity: 0; /* Invisível mas totalmente clicável */
 }
 
 /* TELA DO CONVITE COM O FUNDO DO CELEIRO */
@@ -123,7 +106,7 @@ body {
     z-index: 20;
 }
 
-/* CAIXA DE TEXTO COM LETRAS MAIORES E MAIS DESTACADAS */
+/* CAIXA DE TEXTO */
 .card-content {
     position: absolute;
     top: 29%;
@@ -175,12 +158,6 @@ body {
     font-size: 0.99rem;
 }
 
-.address {
-    font-size: 0.76rem;
-    color: #666;
-    margin-bottom: 2px;
-}
-
 .drink-note {
     background: rgba(255, 243, 205, 0.65);
     border: 0.5px dashed #dfb85e;
@@ -192,7 +169,7 @@ body {
     line-height: 1.3;
 }
 
-/* BOTÕES GRANDES E CENTRALIZADOS POR CIMA DA FOTO */
+/* BOTÕES NA PARTE INFERIOR */
 .bottom-buttons {
     position: absolute;
     bottom: 15px;
@@ -216,7 +193,7 @@ body {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* Painel de Controle de Música no Canto Superior Direito */
+/* Painel de Controle de Música */
 .music-control-box {
     position: absolute;
     top: 15px;
@@ -248,11 +225,4 @@ body {
 
 .music-toggle-btn:active {
     transform: scale(0.95);
-}
-
-.volume-range {
-    width: 60px;
-    height: 4px;
-    accent-color: #ffc107;
-    cursor: pointer;
 }
