@@ -1,15 +1,26 @@
-const video = document.getElementById('intro-video');
 const music = document.getElementById('background-music');
 const musicStatus = document.getElementById('music-status');
 const volumeSlider = document.getElementById('volume-slider');
+const videoScreen = document.getElementById('video-screen');
+const video = document.createElement('video');
 let isPlaying = false; // Inicializado explicitamente como falso
 
-// Força o carregamento do vídeo via script para o iOS não bloquear os controlos
-if (video) {
-    video.src = "video_1.mp4";
-    video.load();
-    video.play().catch(e => console.log("Autoplay do vídeo prevenido:", e));
+// Cria o elemento de vídeo via código para o iPhone não exibir o botão nativo de play
+video.id = 'intro-video';
+video.src = 'video_1.mp4';
+video.autoplay = true;
+video.loop = true;
+video.muted = true;
+video.playsInline = true;
+video.webkitPlaysinline = true;
+video.preload = 'auto';
+
+// Adiciona o vídeo dentro da tela de capa
+if (videoScreen) {
+    videoScreen.insertBefore(video, videoScreen.firstChild);
+    video.play().catch(e => console.log("Reprodução iniciada via interação:", e));
 }
+
 
 // Volume inicial em 50%
 if (music) {
