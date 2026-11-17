@@ -2,7 +2,7 @@ const video = document.getElementById('intro-video');
 const music = document.getElementById('background-music');
 const musicStatus = document.getElementById('music-status');
 const volumeSlider = document.getElementById('volume-slider');
-let isPlaying = true;
+let isPlaying; // Começa falso por padrão no celular
 
 // Volume inicial em 50%
 if (music) {
@@ -10,19 +10,12 @@ if (music) {
     if (volumeSlider) volumeSlider.value = 0.5;
 }
 
-// Tenta iniciar a música ao carregar a página
+// Ao carregar, apenas prepara o botão para "Tocar" sem forçar erro de autoplay
 window.addEventListener('DOMContentLoaded', () => {
-    if (music) {
-        music.play().then(() => {
-            if (musicStatus) musicStatus.textContent = "Pausar";
-            isPlaying = true;
-        }).catch(e => {
-            console.log("Autoplay bloqueado aguardando clique.");
-            if (musicStatus) musicStatus.textContent = "Tocar";
-            isPlaying = false;
-        });
-    }
+    if (musicStatus) musicStatus.textContent = "Tocar";
+    isPlaying = false;
 });
+
 
 // Função para ligar/desligar a música pelo botão
 function toggleMusica() {
@@ -38,6 +31,7 @@ function toggleMusica() {
         });
     }
 }
+
 
 
 // Configuração do vídeo de introdução
