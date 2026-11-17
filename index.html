@@ -10,9 +10,12 @@
 <body>
 
 
-<!-- TELA 1: VÍDEO DE CAPA (Sem a tag video no HTML) -->
-<div id="video-screen" class="screen full-screen" onclick="irParaConvite()">
-    <!-- O vídeo será inserido aqui automaticamente pelo script -->
+<!-- TELA 1: VÍDEO DE CAPA (Página inteira clicável para iniciar som e vídeo) -->
+<div id="video-screen" class="screen full-screen" onclick="interagirTelaCapa()">
+    <video id="intro-video" autoplay loop muted playsinline webkit-playsinline preload="auto">
+        <source src="video_1.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos.
+    </video>
 </div>
 
     <!-- TELA 2: O CONVITE COM O FUNDO DO CELEIRO -->
