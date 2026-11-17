@@ -101,7 +101,7 @@ function voltarAoVideo() {
 // Botão Confirmar Presença (WhatsApp)
 function confirmarPresenca() {
     const meuNumeroWhatsApp = "5511999999999"; // <-- Lembre de colocar seu número aqui com DDI e DDD
-    const mensagem = encodeURIComponent("Olá! Confirmo minha presença no aniversário de 2 anos do Bernardo na Fazendinha! 🤠🎉");
+    const mensagem = encodeURIComponent("Olá! Confirmo minha presença no aniversário de 2 anos do Bernardo! 🤠🎉");
     window.open(`https://wa.me/${meuNumeroWhatsApp}?text=${mensagem}`, '_blank');
 }
 
