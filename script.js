@@ -2,7 +2,7 @@ const video = document.getElementById('intro-video');
 const music = document.getElementById('background-music');
 const musicStatus = document.getElementById('music-status');
 const volumeSlider = document.getElementById('volume-slider');
-let isPlaying; // Começa falso por padrão no celular
+let isPlaying = false; // Inicializado explicitamente como falso
 
 // Volume inicial em 50%
 if (music) {
@@ -10,7 +10,7 @@ if (music) {
     if (volumeSlider) volumeSlider.value = 0.5;
 }
 
-// Ao carregar, apenas prepara o botão para "Tocar" sem forçar erro de autoplay
+// Ao carregar a página, define o texto do botão como "Tocar"
 window.addEventListener('DOMContentLoaded', () => {
     if (musicStatus) musicStatus.textContent = "Tocar";
     isPlaying = false;
