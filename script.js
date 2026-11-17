@@ -2,7 +2,7 @@ const video = document.getElementById('intro-video');
 const music = document.getElementById('background-music');
 const musicStatus = document.getElementById('music-status');
 const volumeSlider = document.getElementById('volume-slider');
-let isPlaying = false;
+let isPlaying = false; // Começa falso por padrão no celular
 
 // Volume inicial em 50%
 if (music) {
@@ -10,42 +10,26 @@ if (music) {
     if (volumeSlider) volumeSlider.value = 0.5;
 }
 
+// Ao carregar, prepara o botão para "Tocar"
 window.addEventListener('DOMContentLoaded', () => {
     if (musicStatus) musicStatus.textContent = "Tocar";
     isPlaying = false;
 });
 
-// 1. Assim que o utilizador clica em QUALQUER LUGAR da tela de capa:
-function interagirTelaCapa() {
-    // Libera e toca a música de fundo
-    if (music && !isPlaying) {
-        music.play().then(() => {
-            if (musicStatus) musicStatus.textContent = "Pausar";
-            isPlaying = true;
-        }).catch(e => console.log(e));
-    }
-
-    // Garante que o vídeo da capa está a reproduzir
-    if (video) {
-        video.play();
-    }
-}
-
-// 2. Quando o vídeo da capa CHEGAR AO FIM, transita automaticamente para o convite!
+// Configuração do vídeo de introdução
 if (video) {
     video.onended = function() {
-        irParaConvite();
+        video.pause();
     };
 }
 
-// 3. Função única de transição para o convite do celeiro
+// Clicou no vídeo de capa: abre o convite e garante a música
 function irParaConvite() {
     const videoScreen = document.getElementById('video-screen');
     const invitationScreen = document.getElementById('invitation-screen');
 
     if (video) video.pause();
 
-    // Garante que a música toca ao entrar no convite, caso ainda não esteja a tocar
     if (music && !isPlaying) {
         music.play().then(() => {
             if (musicStatus) musicStatus.textContent = "Pausar";
@@ -64,7 +48,7 @@ function irParaConvite() {
     }
 }
 
-// 4. Função para voltar ao vídeo de capa (botão de voltar)
+// Clicou em voltar: retorna para o vídeo de capa
 function voltarAoVideo() {
     const videoScreen = document.getElementById('video-screen');
     const invitationScreen = document.getElementById('invitation-screen');
@@ -84,20 +68,20 @@ function voltarAoVideo() {
     }
 }
 
-// 5. Botão Confirmar Presença (WhatsApp)
+// Botão Confirmar Presença (WhatsApp)
 function confirmarPresenca() {
-    const meuNumeroWhatsApp = "5516991500666";
+    const meuNumeroWhatsApp = "5516991500666"; // <-- Lembre de colocar seu número aqui com DDI e DDD
     const mensagem = encodeURIComponent("Olá! Confirmo minha presença no aniversário de 2 anos do Bernardo! 🤠🎉");
     window.open(`https://wa.me/${meuNumeroWhatsApp}?text=${mensagem}`, '_blank');
 }
 
-// 6. Botão Local da Festa (Google Maps)
+// Botão Local da Festa (Google Maps)
 function abrirMapa() {
     const endereco = encodeURIComponent("Rua Miguel Barachini, 340 - Parque dos Bandeirantes");
     window.open(`https://www.google.com/maps/search/?api=1&query=${endereco}`, '_blank');
 }
 
-// 7. Botão para ligar/desligar a música no topo
+// Função para ligar/desligar a música pelo botão
 function toggleMusica() {
     if (!music) return;
     if (isPlaying) {
@@ -112,7 +96,7 @@ function toggleMusica() {
     }
 }
 
-// 8. Controlo de volume pela barra
+// Configuração da barra deslizante de volume
 function mudarVolume(valor) {
     if (music) {
         music.volume = valor;
