@@ -200,3 +200,45 @@ body {
 .custom-btn:active {
     background: rgba(255, 255, 255, 0.2);
 }
+
+/* Painel de Controle de Música no Canto Superior Direito */
+.music-control-box {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #fff;
+    padding: 6px 10px;
+    border-radius: 20px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.music-toggle-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Fredoka', cursive, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.music-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+/* Estilo da barra deslizante de volume */
+.volume-range {
+    width: 60px;
+    height: 4px;
+    accent-color: #ffc107; /* Cor amonetada charmosa na barra */
+    cursor: pointer;
+}
